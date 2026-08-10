@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  Ahmed's Photography — single dark charcoal theme (no light mode).
+  Colour palette lives here as HSL custom properties so the whole
+  site (including shadcn/ui primitives like the lightbox dialog)
+  stays consistent. See CLAUDE.md "COLOUR PALETTE" for the source spec.
+*/
+@layer base {
+  :root {
+    --background: 0 0% 10%; /* ~#1a1a1a deep charcoal */
+    --surface: 0 0% 13%; /* ~#212121 slightly lighter charcoal, for subtle separation */
+
+    --foreground: 36 12% 93%; /* soft off-white */
+    --muted-foreground: 30 5% 60%; /* muted light gray */
+
+    --accent: 33 30% 68%; /* warm neutral / stone accent, used sparingly */
+    --accent-foreground: 0 0% 12%;
+
+    --card: 0 0% 13%;
+    --card-foreground: 36 12% 93%;
+    --popover: 0 0% 13%;
+    --popover-foreground: 36 12% 93%;
+
+    --primary: 36 12% 93%;
+    --primary-foreground: 0 0% 10%;
+    --secondary: 0 0% 16%;
+    --secondary-foreground: 36 12% 93%;
+    --muted: 0 0% 15%;
+
+    --destructive: 4 45% 45%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 30 4% 22%;
+    --input: 30 4% 22%;
+    --ring: 33 30% 68%;
+
+    --radius: 0.125rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "kern";
+  }
+  ::selection {
+    background-color: hsl(var(--accent) / 0.35);
+    color: hsl(var(--foreground));
+  }
+}

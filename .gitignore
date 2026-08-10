@@ -1,0 +1,44 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Parcel build cache (used only by the optional web-artifacts-builder
+# bundle.html workflow, not by the Cloudflare Pages build)
+.parcel-cache
+
+# bundle.html is a generated single-file artifact from the optional
+# web-artifacts-builder workflow (see README). It is NOT the production
+# deployment target — Cloudflare builds from src/ via `vite build` — so
+# it's regenerated on demand rather than committed. Regenerate with the
+# web-artifacts-builder skill's bundle-artifact.sh if you want it again.
+bundle.html
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS files
+Thumbs.db
+desktop.ini
