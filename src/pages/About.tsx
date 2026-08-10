@@ -6,16 +6,11 @@ export function About() {
       <h1 className="font-serif text-3xl text-foreground sm:text-4xl">About</h1>
 
       <div className="mt-12 flex flex-col gap-10 sm:mt-16 sm:flex-row sm:gap-16">
-        {/*
-          PORTRAIT PLACEHOLDER
-          Add a real photo at public/images/portrait.jpg and it will
-          replace this placeholder automatically.
-        */}
         <div className="sm:w-2/5 sm:shrink-0">
           <PlaceholderImage
-            src="/images/portrait.jpg"
-            alt="Portrait of Ahmed"
-            aspectRatio="4 / 5"
+            src="/images/portrait.webp"
+            alt="Portrait of Ahmed Jaan"
+            aspectRatio="1156 / 1542"
             label="PORTRAIT"
             className="w-full"
           />
