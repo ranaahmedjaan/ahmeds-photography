@@ -1,3 +1,4 @@
+import { SocialLinks } from "@/components/layout/SocialLinks";
 import { PlaceholderImage } from "@/components/photography/PlaceholderImage";
 
 export function About() {
@@ -61,14 +62,7 @@ export function About() {
           </div>
 
           <div className="mt-12 flex gap-8 border-t border-border/60 pt-8 font-sans text-sm text-muted-foreground">
-            <a
-              href="https://github.com/ranaahmedjaan"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition-colors duration-200 hover:text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-            >
-              GitHub
-            </a>
+            <SocialLinks />
           </div>
         </div>
       </div>

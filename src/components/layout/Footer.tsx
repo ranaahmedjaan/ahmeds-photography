@@ -1,3 +1,5 @@
+import { SocialLinks } from "./SocialLinks";
+
 export function Footer() {
   return (
     <footer className="border-t border-border/60">
@@ -11,14 +13,7 @@ export function Footer() {
           </div>
 
           <div className="flex gap-8 font-sans text-sm text-muted-foreground">
-            <a
-              href="https://github.com/ranaahmedjaan"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition-colors duration-200 hover:text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-            >
-              GitHub
-            </a>
+            <SocialLinks />
           </div>
         </div>
 

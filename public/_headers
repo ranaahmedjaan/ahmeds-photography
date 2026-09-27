@@ -1,0 +1,23 @@
+# Security headers for Cloudflare Pages. Vite copies this file from public/ into
+# dist/, where Cloudflare reads it; it is configuration, not a page on the site.
+#
+# Content-Security-Policy notes:
+# - Scripts: only this site's own bundled JavaScript. No inline scripts, no eval.
+# - Google Fonts is the only third-party origin (CSS from fonts.googleapis.com,
+#   font files from fonts.gstatic.com).
+# - style-src needs 'unsafe-inline' because the photo viewer (Radix Dialog) adds a
+#   <style> tag at runtime to stop the page scrolling behind it. Its contents depend
+#   on the visitor's scrollbar width, so it can't be allowed by a fixed hash.
+#   style-src-attr 'none' still blocks inline style="" attributes in browsers that
+#   support it (React's style props are unaffected).
+# - img-src allows data: only for the inline favicon in index.html.
+# If you add anything new that loads from another website (fonts, scripts, images,
+# embeds, analytics), add that origin to the matching directive or it will be blocked.
+/*
+  Content-Security-Policy: default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; style-src-attr 'none'; font-src https://fonts.gstatic.com; img-src 'self' data:; base-uri 'none'; form-action 'none'; frame-ancestors 'none'; object-src 'none'; upgrade-insecure-requests
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: accelerometer=(), browsing-topics=(), camera=(), display-capture=(), geolocation=(), gyroscope=(), hid=(), magnetometer=(), microphone=(), midi=(), payment=(), serial=(), usb=()
+  Cross-Origin-Opener-Policy: same-origin
+  Strict-Transport-Security: max-age=31536000

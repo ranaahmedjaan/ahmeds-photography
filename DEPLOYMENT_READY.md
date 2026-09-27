@@ -1,7 +1,7 @@
 # Deployment Readiness Report — Ahmed's Photography
 
 **Audit date:** 2026-08-10
-**Project root:** `C:\Users\ranaa\claude\photography portfolio\ahmeds-photography`
+**Project root:** the `ahmeds-photography/` folder
 (contains `package.json`, `src/`, `public/`, `vite.config.ts` directly — this
 is the correct repository root. Run `git init` **inside this folder**, not
 its parent `photography portfolio/` folder.)
@@ -117,7 +117,7 @@ Zero console errors and zero failed/404 requests observed across the entire test
 Nothing code- or config-related. The remaining steps are the ones only you can take:
 
 ```bash
-cd "C:\Users\ranaa\claude\photography portfolio\ahmeds-photography"
+cd ahmeds-photography
 git init
 git add .
 git status

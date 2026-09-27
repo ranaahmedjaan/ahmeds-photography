@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef } from "react";
+import type { TouchEvent as ReactTouchEvent } from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
@@ -12,6 +13,14 @@ interface LightboxProps {
   onNavigate: (index: number) => void;
 }
 
+/** Minimum horizontal finger travel (px) that counts as a swipe. */
+const SWIPE_THRESHOLD = 48;
+
+/** True while the user has pinch-zoomed the page, so one finger is panning rather than swiping. */
+function isPinchZoomed() {
+  return (window.visualViewport?.scale ?? 1) > 1.01;
+}
+
 /**
  * Full-screen, cinematic photo viewer. Built on the shadcn/Radix Dialog
  * primitive (for focus-trapping, Escape-to-close, and screen-reader
@@ -19,7 +28,11 @@ interface LightboxProps {
  */
 export function Lightbox({ photos, index, onClose, onNavigate }: LightboxProps) {
   const photo = photos[index];
-  const touchStartX = useRef<number | null>(null);
+  // The one-finger swipe being tracked (null when none). `multiTouch` stays true from
+  // the moment a second finger lands until every finger has lifted, so a pinch-zoom —
+  // including one that ends on a single finger — can never be read as a swipe.
+  const swipe = useRef<{ id: number; x: number; y: number } | null>(null);
+  const multiTouch = useRef(false);
   const hasMultiple = photos.length > 1;
 
   const goPrev = useCallback(() => {
@@ -39,6 +52,49 @@ export function Lightbox({ photos, index, onClose, onNavigate }: LightboxProps) 
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [goPrev, goNext]);
 
+  function handleTouchStart(event: ReactTouchEvent) {
+    if (event.touches.length === 1) {
+      // Only finger on the screen: a fresh gesture.
+      const touch = event.touches[0];
+      multiTouch.current = false;
+      swipe.current = { id: touch.identifier, x: touch.clientX, y: touch.clientY };
+    } else {
+      multiTouch.current = true;
+      swipe.current = null;
+    }
+  }
+
+  function handleTouchMove(event: ReactTouchEvent) {
+    if (event.touches.length > 1) {
+      multiTouch.current = true;
+      swipe.current = null;
+    }
+  }
+
+  function handleTouchEnd(event: ReactTouchEvent) {
+    // Decide only once the last finger lifts.
+    if (event.touches.length > 0) return;
+    const start = swipe.current;
+    const wasMultiTouch = multiTouch.current;
+    swipe.current = null;
+    multiTouch.current = false;
+    if (!start || wasMultiTouch || isPinchZoomed()) return;
+
+    const end = Array.from(event.changedTouches).find((touch) => touch.identifier === start.id);
+    if (!end) return;
+    const dx = end.clientX - start.x;
+    const dy = end.clientY - start.y;
+    if (Math.abs(dx) > SWIPE_THRESHOLD && Math.abs(dx) > Math.abs(dy)) {
+      if (dx > 0) goPrev();
+      else goNext();
+    }
+  }
+
+  function handleTouchCancel() {
+    swipe.current = null;
+    multiTouch.current = false;
+  }
+
   if (!photo) return null;
 
   return (
@@ -50,18 +106,10 @@ export function Lightbox({ photos, index, onClose, onNavigate }: LightboxProps) 
     >
       <DialogContent
         showCloseButton={false}
-        onTouchStart={(event) => {
-          touchStartX.current = event.touches[0]?.clientX ?? null;
-        }}
-        onTouchEnd={(event) => {
-          if (touchStartX.current === null) return;
-          const delta = (event.changedTouches[0]?.clientX ?? 0) - touchStartX.current;
-          if (Math.abs(delta) > 48) {
-            if (delta > 0) goPrev();
-            else goNext();
-          }
-          touchStartX.current = null;
-        }}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+        onTouchCancel={handleTouchCancel}
         className="left-0 top-0 h-dvh max-h-none w-screen max-w-none translate-x-0 translate-y-0 gap-0 rounded-none border-none bg-background/[0.98] p-0 shadow-none duration-200 data-[state=closed]:slide-out-to-left-0 data-[state=closed]:slide-out-to-top-0 data-[state=open]:slide-in-from-left-0 data-[state=open]:slide-in-from-top-0 sm:rounded-none"
       >
         <DialogTitle className="sr-only">{photo.title || `Photo ${index + 1}`}</DialogTitle>
