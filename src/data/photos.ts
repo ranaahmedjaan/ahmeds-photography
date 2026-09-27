@@ -324,4 +324,92 @@ export const photos: Photo[] = [
     alt: "Dry grasses lit warmly under a deep blue night sky.",
     aspectRatio: "3024 / 4032",
   },
+  {
+    id: 30,
+    src: "/images/photo-30.webp",
+    title: "",
+    caption:
+      "A hazy Township, Lahore skyline rests beneath a soft sky as the distant minaret rises in quiet stillness.",
+    category: "Landscape",
+    alt: "A hazy skyline in Township, Lahore, with a minaret in the distance.",
+    aspectRatio: "3671 / 2753",
+  },
+  {
+    id: 31,
+    src: "/images/photo-31.webp",
+    title: "",
+    caption: "Golden dunes roll gently beneath a wide blue sky like waves frozen in the desert.",
+    category: "Nature",
+    alt: "Golden sand dunes under a wide blue sky.",
+    aspectRatio: "1526 / 2035",
+  },
+  {
+    id: 32,
+    src: "/images/photo-32.webp",
+    title: "",
+    caption:
+      "Emerald light washes through the tunnel, drawing the eye toward its glowing distant end.",
+    category: "Landscape",
+    alt: "A tunnel lit with green light, with a glowing opening at the far end.",
+    aspectRatio: "2757 / 3676",
+  },
+  {
+    id: 33,
+    src: "/images/photo-33.webp",
+    title: "",
+    caption: "Fog drifts over the quiet station as glowing lights stretch along the empty tracks.",
+    category: "Landscape",
+    alt: "Fog over an empty train station, with lights along the tracks.",
+    aspectRatio: "3024 / 4032",
+  },
+  {
+    id: 34,
+    src: "/images/photo-34.webp",
+    title: "",
+    caption:
+      "A tall tree stands dark and graceful against the warm fading colours of the evening sky.",
+    category: "Nature",
+    alt: "A tall tree silhouetted against a warm evening sky.",
+    aspectRatio: "2012 / 3078",
+  },
+  {
+    id: 35,
+    src: "/images/photo-35.webp",
+    title: "",
+    caption:
+      "A quiet churchyard glows softly beneath the night sky, framed by the gentle presence of trees.",
+    category: "Landscape",
+    alt: "A softly lit churchyard at night, framed by trees.",
+    aspectRatio: "1500 / 2000",
+  },
+  {
+    id: 36,
+    src: "/images/photo-36.webp",
+    title: "",
+    caption:
+      "Niagara Falls shimmers through the darkness, glowing with colour beneath the heavy night clouds.",
+    category: "Landscape",
+    alt: "Niagara Falls lit with coloured lights at night under heavy clouds.",
+    aspectRatio: "896 / 1195",
+  },
+  {
+    id: 37,
+    src: "/images/photo-37.webp",
+    title: "",
+    caption:
+      "Rain-slicked streets gleam with light as the Ferris wheel shines brightly over the lively night scene.",
+    category: "Landscape",
+    alt: "A lit Ferris wheel above rain-wet streets at night.",
+    aspectRatio: "896 / 1193",
+  },
+  {
+    id: 38,
+    src: "/images/photo-38.webp",
+    title: "",
+    caption:
+      "Lions rest and wander through the grass, their quiet strength glowing beneath the night.",
+    category: "Nature",
+    alt: "Lions resting and walking through grass at night.",
+    aspectRatio: "864 / 1210",
+  },
 ];
