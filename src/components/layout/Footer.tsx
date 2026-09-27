@@ -10,23 +10,14 @@ export function Footer() {
             </p>
           </div>
 
-          {/*
-            CONTACT / SOCIAL PLACEHOLDERS
-            Replace href="#" below with your real Instagram URL and
-            mailto: address once you have them.
-          */}
           <div className="flex gap-8 font-sans text-sm text-muted-foreground">
             <a
-              href="#"
+              href="https://github.com/ranaahmedjaan"
+              target="_blank"
+              rel="noopener noreferrer"
               className="transition-colors duration-200 hover:text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
-              Instagram
-            </a>
-            <a
-              href="#"
-              className="transition-colors duration-200 hover:text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-            >
-              Email
+              GitHub
             </a>
           </div>
         </div>

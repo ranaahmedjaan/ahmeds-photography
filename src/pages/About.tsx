@@ -20,11 +20,17 @@ export function About() {
           {/* BIO — edit these paragraphs freely. */}
           <div className="space-y-5 font-sans text-base leading-relaxed text-foreground/90 sm:text-lg">
             <p>
-              Hi, I&rsquo;m Ahmed Jaan, a first-year student at the University of
-              Toronto studying as a Statistics Specialist. Outside of academics
-              and coding, one of my biggest interests is photography. I enjoy
-              capturing moments, places, and details in nature that might
-              otherwise go unnoticed.
+              Hi, I&rsquo;m Ahmed Jaan, a student at the University of Toronto
+              pursuing a double major in Statistics and Geospatial Data Science,
+              along with a minor in Computer Science. I&rsquo;m especially
+              interested in ecology, and in how data science, statistics, and
+              spatial analysis can be used to better understand environmental
+              patterns and natural systems.
+            </p>
+            <p>
+              Outside of academics and coding, one of my biggest interests is
+              photography. I enjoy capturing moments, places, and details in
+              nature that might otherwise go unnoticed.
             </p>
             <p>
               My photography mainly focuses on landscape and nature
@@ -54,23 +60,14 @@ export function About() {
             <p>Thanks for checking out my portfolio!</p>
           </div>
 
-          {/*
-            CONTACT / SOCIAL PLACEHOLDERS
-            Replace href="#" with your real Instagram URL and mailto:
-            address once you have them.
-          */}
           <div className="mt-12 flex gap-8 border-t border-border/60 pt-8 font-sans text-sm text-muted-foreground">
             <a
-              href="#"
+              href="https://github.com/ranaahmedjaan"
+              target="_blank"
+              rel="noopener noreferrer"
               className="transition-colors duration-200 hover:text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
-              Instagram
-            </a>
-            <a
-              href="#"
-              className="transition-colors duration-200 hover:text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-            >
-              Email
+              GitHub
             </a>
           </div>
         </div>
